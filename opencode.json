@@ -1,0 +1,79 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [".agent/rules/*.md"],
+  "permission": {
+    "bash": "allow",
+    "edit": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "list": "allow",
+    "lsp": "allow",
+    "skill": "allow",
+    "todowrite": "allow",
+    "todoread": "allow",
+    "webfetch": "allow",
+    "question": "allow"
+  },
+  "mcp": {
+    "db-query": {
+      "type": "remote",
+      "url": "http://localhost:8384/mcp/db_query/",
+      "enabled": true,
+      "headers": {
+        "Authorization": "Bearer MY_API_KEY"
+      }
+    }
+  },
+  "plugin": [
+    // "mtopencode-plugin"
+  ],
+  "provider": {
+    "gomtm-openai": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "My Custom OpenAI Provider",
+      "options": {
+        "baseURL": "https://mtgateapi.yuepa8.com/api/cf/modelapi/auto/",
+        "apiKey": "api_key_no_need"
+      },
+      "models": {
+        "coder-model": {
+          "name": "gomtm-auto"
+        },
+        "qwen3-coder-plus": {
+          "name": "qwen3-coder-plus"
+        },
+        "vision-model": {
+          "name": "vision-model"
+        }
+      }
+    },
+
+    "nvidia-nim": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "NVIDIA NIM",
+      "options": {
+        "baseURL": "https://integrate.api.nvidia.com/v1",
+        "apiKey": "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"
+      },
+      "models": {
+        "z-ai/glm4.7": {
+          "name": "nim-glm4.7-1"
+        }
+      }
+    },
+    "nvidia-nim2": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "NVIDIA NIM2",
+      "options": {
+        "baseURL": "https://integrate.api.nvidia.com/v1",
+        "apiKey": "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"
+      },
+      "models": {
+        "z-ai/glm4.7": {
+          "name": "my-glm4.7-2"
+        }
+      }
+    }
+  },
+  "model": "nvidia-nim/z-ai/glm4.7-2"
+}
